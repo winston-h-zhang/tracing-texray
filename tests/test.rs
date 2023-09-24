@@ -10,7 +10,7 @@ fn test_me() {
     env_logger::init();
     let capture_writer = CaptureWriter::stdout();
     let layer = TeXRayLayer::new()
-        .width(80)
+        .width(120)
         .enable_events()
         .update_settings(|s| s.writer(capture_writer.clone()));
     let registry = tracing_subscriber::registry()

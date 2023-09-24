@@ -15,7 +15,7 @@ use tracing_subscriber::layer::Context;
 use tracing_subscriber::registry::LookupSpan;
 
 const NESTED_EVENT_OFFSET: usize = 2;
-const DURATION_WIDTH: usize = 6;
+const DURATION_WIDTH: usize = 15;
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 pub(crate) enum Action {
@@ -144,8 +144,8 @@ impl SpanInfo {
         write!(out, "{:width$}", key, width = truncated_key_width)?;
         write!(
             out,
-            " {:>dur_width$} ",
-            crate::pretty_duration(span_len),
+            " {:>dur_width$?} ",
+            span_len,
             dur_width = DURATION_WIDTH
         )?;
 
